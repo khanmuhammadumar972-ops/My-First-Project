@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pakistan Cricket Legacy Hub – The Green Titans History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── CSS VARIABLES ─── */
+:root {
+  --bg: #050a05;
+  --bg2: #0a120a;
+  --bg3: #0f1a0f;
+  --glass: rgba(0,255,80,0.04);
+  --glass2: rgba(0,255,80,0.08);
+  --green: #00ff50;
+  --green2: #00c840;
+  --green3: #39ff6e;
+  --gold: #ffd700;
+  --gold2: #ffb800;
+  --white: #f0fff4;
+  --muted: #5a7a5e;
+  --border: rgba(0,255,80,0.15);
+  --border2: rgba(255,215,0,0.2);
+  --neon-shadow: 0 0 20px rgba(0,255,80,0.4), 0 0 60px rgba(0,255,80,0.15);
+  --gold-shadow: 0 0 20px rgba(255,215,0,0.4), 0 0 60px rgba(255,215,0,0.1);
+  --card-bg: rgba(5,20,8,0.85);
+  --radius: 12px;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui: 'Rajdhani', sans-serif;
+  --font-tech: 'Orbitron', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+[data-theme="light"] {
+  --bg: #f0f7f0;
+  --bg2: #e4f0e4;
+  --bg3: #d8ebd8;
+  --glass: rgba(0,120,40,0.06);
+  --glass2: rgba(0,120,40,0.12);
+  --green: #006b20;
+  --green2: #008530;
+  --green3: #00a040;
+  --gold: #b8860b;
+  --gold2: #a07000;
+  --white: #0a1a0a;
+  --muted: #4a6a4e;
+  --border: rgba(0,100,30,0.2);
+  --border2: rgba(180,130,0,0.25);
+  --neon-shadow: 0 0 15px rgba(0,120,40,0.3);
+  --gold-shadow: 0 0 15px rgba(180,130,0,0.3);
+  --card-bg: rgba(240,255,240,0.85);
+}
+
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+::selection { background: var(--green); color: #000; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
+
+/* ─── NOISE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ─── NAVIGATION ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5,10,5,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s;
+}
+[data-theme="light"] nav { background: rgba(240,247,240,0.8); }
+.nav-logo {
+  font-family: var(--font-tech);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--green);
+  text-shadow: var(--neon-shadow);
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--green); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.theme-toggle {
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 16px;
+  cursor: pointer;
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  transition: all 0.3s;
+}
+.theme-toggle:hover { border-color: var(--green); color: var(--green); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--white); display: block; transition: all 0.3s; }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 2rem 2rem;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,100,30,0.25) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 80% at 20% 80%, rgba(255,215,0,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 50% at 80% 20%, rgba(0,200,60,0.08) 0%, transparent 50%);
+}
+/* Animated cricket field lines */
+.hero-field {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  opacity: 0.07;
+}
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: float-particle linear infinite;
+  opacity: 0;
+}
+@keyframes float-particle {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  max-width: 900px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass2);
+  border: 1px solid var(--border2);
+  border-radius: 50px;
+  padding: 6px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  animation: fade-up 0.8s ease forwards;
+  opacity: 0;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse-dot 1.5s ease infinite;
+}
+@keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.5} }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: 4px;
+  color: var(--white);
+  animation: fade-up 0.8s 0.2s ease forwards;
+  opacity: 0;
+  margin-bottom: 0.5rem;
+}
+.hero-title .green { color: var(--green); text-shadow: var(--neon-shadow); }
+.hero-title .gold { color: var(--gold); text-shadow: var(--gold-shadow); }
+.hero-subtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 1.5rem 0 2.5rem;
+  animation: fade-up 0.8s 0.4s ease forwards;
+  opacity: 0;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fade-up 0.8s 0.6s ease forwards;
+  opacity: 0;
+}
+.btn-primary {
+  padding: 14px 36px;
+  background: linear-gradient(135deg, var(--green), var(--green2));
+  color: #000;
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0,255,80,0.3);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,255,80,0.5); }
+.btn-secondary {
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-secondary:hover { background: rgba(255,215,0,0.1); transform: translateY(-3px); box-shadow: var(--gold-shadow); }
+.hero-stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  animation: fade-up 0.8s 0.8s ease forwards;
+  opacity: 0;
+  padding: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: var(--font-tech);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--green);
+  text-shadow: var(--neon-shadow);
+}
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION SHARED ─── */
+section { padding: 6rem 2rem; position: relative; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 3px;
+  color: var(--white);
+  line-height: 1;
+}
+.section-title span { color: var(--green); text-shadow: var(--neon-shadow); }
+.section-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ─── WINS / ACHIEVEMENTS ─── */
+#achievements { background: var(--bg2); }
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.win-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: default;
+  backdrop-filter: blur(12px);
+}
+.win-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+.win-card:hover::before { transform: scaleX(1); }
+.win-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--green);
+  box-shadow: 0 20px 60px rgba(0,255,80,0.1), 0 0 0 1px rgba(0,255,80,0.1);
+}
+.win-card.gold-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 20px 60px rgba(255,215,0,0.1);
+}
+.win-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.win-year {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.win-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+.win-opponent {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+.win-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.win-badge {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+/* ─── PLAYER STATS ─── */
+#players { background: var(--bg); }
+.player-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  align-items: center;
+}
+.search-wrap {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 1rem;
+  pointer-events: none;
+}
+#player-search {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+#player-search:focus { border-color: var(--green); }
+#player-search::placeholder { color: var(--muted); }
+.format-filters {
+  display: flex;
+  gap: 0.5rem;
+}
+.filter-btn {
+  padding: 10px 20px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.filter-btn.active { background: var(--green); color: #000; border-color: var(--green); box-shadow: 0 4px 15px rgba(0,255,80,0.3); }
+.filter-btn:hover:not(.active) { border-color: var(--green); color: var(--green); }
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.player-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: all 0.35s;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+.player-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0,255,80,0.06), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.player-card:hover::after { opacity: 1; }
+.player-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,255,80,0.4);
+  box-shadow: 0 15px 50px rgba(0,255,80,0.1);
+}
+.player-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green2), var(--green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #000;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(0,255,80,0.3);
+  position: relative;
+  z-index: 1;
+}
+.player-role-badge {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(255,215,0,0.1);
+  border: 1px solid rgba(255,215,0,0.3);
+  color: var(--gold);
+}
+.player-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+  position: relative;
+  z-index: 1;
+}
+.player-era {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.player-mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.mini-stat {
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--glass);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.mini-stat-val {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green);
+}
+.mini-stat-key {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.player-card-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+.view-stats-btn {
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--green);
+  text-transform: uppercase;
+}
+.arrow-icon { color: var(--green); transition: transform 0.3s; }
+.player-card:hover .arrow-icon { transform: translateX(4px); }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.35s;
+  position: relative;
+}
+.modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1.2rem;
+  transition: all 0.2s;
+}
+.modal-close:hover { color: var(--white); border-color: var(--green); }
+.modal-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+.modal-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green2), var(--green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: #000;
+  box-shadow: 0 4px 30px rgba(0,255,80,0.4);
+  flex-shrink: 0;
+}
+.modal-player-name {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+.modal-player-role { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 2px; margin-top: 4px; }
+.stats-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.75rem; }
+.stats-tab {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--muted);
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.stats-tab.active { background: var(--green); color: #000; border-color: var(--green); }
+.stats-tab:hover:not(.active) { border-color: var(--green); color: var(--green); }
+.stats-panel { display: none; }
+.stats-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.stat-block {
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  text-align: center;
+}
+.stat-block-val {
+  font-family: var(--font-tech);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--green);
+  text-shadow: 0 0 15px rgba(0,255,80,0.4);
+}
+.stat-block-key {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.stat-block.gold-stat .stat-block-val { color: var(--gold); text-shadow: var(--gold-shadow); }
+
+/* ─── TIMELINE ─── */
+#timeline { background: var(--bg3); overflow: hidden; }
+.timeline-wrapper { position: relative; padding: 2rem 0; }
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--green), var(--gold), var(--green), transparent);
+  transform: translateX(-50%);
+}
+.timeline-items { display: flex; flex-direction: column; gap: 3rem; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  gap: 0;
+}
+.timeline-item:nth-child(even) .tl-content { order: 3; text-align: left; }
+.timeline-item:nth-child(even) .tl-empty { order: 1; }
+.timeline-item:nth-child(odd) .tl-content { text-align: right; }
+.tl-content {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  transition: all 0.35s;
+}
+.tl-content:hover {
+  border-color: var(--green);
+  transform: scale(1.02);
+  box-shadow: 0 10px 40px rgba(0,255,80,0.08);
+}
+.tl-year {
+  font-family: var(--font-tech);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--green);
+  text-shadow: var(--neon-shadow);
+}
+.tl-event {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin: 4px 0;
+}
+.tl-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.tl-dot {
+  width: 16px; height: 16px;
+  background: var(--green);
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(0,255,80,0.15), var(--neon-shadow);
+  flex-shrink: 0;
+}
+.tl-dot.gold { background: var(--gold); box-shadow: 0 0 0 4px rgba(255,215,0,0.15), var(--gold-shadow); }
+.tl-empty { /* spacer */ }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer-flag {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.footer-sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+}
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.social-btn {
+  padding: 8px 20px;
+  background: var(--glass2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.social-btn:hover { border-color: var(--green); color: var(--green); }
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  opacity: 0.5;
+}
+.footer-copy span { color: var(--green); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    gap: 1.25rem;
+    z-index: 999;
+  }
+  .timeline-line { left: 28px; }
+  .timeline-item { grid-template-columns: 56px 1fr; }
+  .timeline-item:nth-child(even) .tl-content { order: 2; text-align: left; }
+  .timeline-item:nth-child(even) .tl-empty { display: none; }
+  .timeline-item:nth-child(odd) .tl-content { order: 2; text-align: left; }
+  .tl-dot { margin: 0 0 0 12px; }
+  .tl-empty { display: none; }
+  .hero-stats-bar { gap: 1.5rem; }
+  section { padding: 4rem 1.25rem; }
+  .stats-panel.active { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .format-filters { width: 100%; }
+  .filter-btn { flex: 1; text-align: center; font-size: 0.65rem; padding: 8px; }
+  .achievements-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── COUNTER ANIMATION ─── */
+.count-up { display: inline-block; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">PAK<span>CRICKET</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#players">Players</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle">☀ LIGHT</button>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <svg class="hero-field" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="450" cy="490" rx="440" ry="300" stroke="white" stroke-width="1.5"/>
+    <ellipse cx="450" cy="490" rx="280" ry="190" stroke="white" stroke-width="1"/>
+    <line x1="450" y1="190" x2="450" y2="790" stroke="white" stroke-width="0.8"/>
+    <rect x="410" y="430" width="80" height="100" stroke="white" stroke-width="1"/>
+    <rect x="425" y="420" width="50" height="15" stroke="white" stroke-width="0.8"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      EST. 1952 — PAKISTAN CRICKET BOARD
+    </div>
+    <h1 class="hero-title">
+      <span class="green">PAKISTAN</span><br>
+      CRICKET<br>
+      <span class="gold">LEGACY</span> HUB
+    </h1>
+    <p class="hero-subtitle">Celebrating Legends, Records & Historic Wins</p>
+    <div class="hero-buttons">
+      <a href="#achievements" class="btn-primary">🏆 Explore History</a>
+      <a href="#players" class="btn-secondary">📊 View Player Stats</a>
+    </div>
+    <div class="hero-stats-bar">
+      <div class="hero-stat">
+        <div class="hero-stat-num count-up" data-target="3">0</div>
+        <div class="hero-stat-label">World Titles</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num count-up" data-target="73">0</div>
+        <div class="hero-stat-label">Years of Cricket</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num count-up" data-target="500">0</div>
+        <div class="hero-stat-label">Test Matches</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num count-up" data-target="17">0</div>
+        <div class="hero-stat-label">No.1 ICC Rankings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">// GLORY MOMENTS</p>
+      <h2 class="section-title">Historic <span>Wins</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="achievements-grid">
+
+      <div class="win-card reveal">
+        <span class="win-badge">ICC WORLD CUP</span>
+        <span class="win-icon">🏆</span>
+        <div class="win-year">MARCH 25, 1992 · MELBOURNE</div>
+        <div class="win-title">ODI WORLD CUP CHAMPIONS</div>
+        <div class="win-opponent">vs ENGLAND · WON BY 22 RUNS</div>
+        <p class="win-desc">Under Imran Khan's inspirational leadership, Pakistan defied all odds to win their maiden World Cup. From near-elimination, the team stormed through to glory — an iconic triumph that united a nation.</p>
+      </div>
+
+      <div class="win-card gold-card reveal">
+        <span class="win-badge">ICC T20 WC</span>
+        <span class="win-icon">⚡</span>
+        <div class="win-year">JUNE 21, 2009 · LORDS</div>
+        <div class="win-title">T20 WORLD CUP CHAMPIONS</div>
+        <div class="win-opponent">vs SRI LANKA · WON BY 8 WICKETS</div>
+        <p class="win-desc">A dominant display of T20 mastery at Lord's. Pakistan chased down Sri Lanka's total with ease, with Shahid Afridi's bowling and the top order's aggression sealing a historic T20 title.</p>
+      </div>
+
+      <div class="win-card reveal">
+        <span class="win-badge">ICC CT</span>
+        <span class="win-icon">🥇</span>
+        <div class="win-year">JUNE 18, 2017 · THE OVAL</div>
+        <div class="win-title">CHAMPIONS TROPHY WINNERS</div>
+        <div class="win-opponent">vs INDIA · WON BY 180 RUNS</div>
+        <p class="win-desc">The most stunning reversal in Champions Trophy history. Pakistan, ranked lowest, destroyed tournament favorites India by 180 runs in the final. Fakhar Zaman's century and Hasan Ali's bowling were breathtaking.</p>
+      </div>
+
+      <div class="win-card reveal">
+        <span class="win-badge">TEST SERIES</span>
+        <span class="win-icon">🎯</span>
+        <div class="win-year">1987 — SUBCONTINENTAL DOMINANCE</div>
+        <div class="win-title">HISTORIC TEST SERIES</div>
+        <div class="win-opponent">vs ENGLAND — HOME & AWAY WINS</div>
+        <p class="win-desc">The late 1980s saw Wasim Akram and Imran Khan spearhead Pakistan's Test dominance. Reverse swing became a weapon that confounded every batting lineup in the world.</p>
+      </div>
+
+      <div class="win-card gold-card reveal">
+        <span class="win-badge">ODI CLASSIC</span>
+        <span class="win-icon">🏏</span>
+        <div class="win-year">NOVEMBER 2003 · SHARJAH</div>
+        <div class="win-title">SHARJAH DESERT STORM</div>
+        <div class="win-opponent">vs INDIA · RECORD CHASE</div>
+        <p class="win-desc">Sharjah has witnessed some of Pakistan's greatest ODI moments — from Javed Miandad's last-ball six to successive desert storm victories that became part of cricket mythology.</p>
+      </div>
+
+      <div class="win-card reveal">
+        <span class="win-badge">LANDMARK</span>
+        <span class="win-icon">🌟</span>
+        <div class="win-year">ONGOING LEGACY</div>
+        <div class="win-title">REACHING NO.1 IN ALL FORMATS</div>
+        <div class="win-opponent">TEST · ODI · T20 RANKINGS</div>
+        <p class="win-desc">Pakistan has held the No.1 ICC Test ranking, showcasing consistency across formats. With Babar Azam leading the modern era, the Green Titans continue to stamp their authority on world cricket.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PLAYERS -->
+<section id="players">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">// STATS DATABASE</p>
+      <h2 class="section-title">Green Titans <span>Players</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="player-controls reveal">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="player-search" placeholder="Search player..."/>
+      </div>
+      <div class="format-filters">
+        <button class="filter-btn active" data-format="all">ALL</button>
+        <button class="filter-btn" data-format="batsman">BATTING</button>
+        <button class="filter-btn" data-format="bowling">BOWLING</button>
+        <button class="filter-btn" data-format="allrounder">ALL-ROUND</button>
+      </div>
+    </div>
+    <div class="players-grid" id="players-grid"></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">// CRICKET HISTORY</p>
+      <h2 class="section-title">Pakistan Cricket <span>Timeline</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline-wrapper">
+      <div class="timeline-line"></div>
+      <div class="timeline-items" id="timeline-items"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-flag">🇵🇰</div>
+  <div class="footer-tagline">PAKISTAN CRICKET LEGACY HUB</div>
+  <div class="footer-sub">// MADE WITH PASSION FOR THE GREEN TITANS //</div>
+  <div class="footer-socials">
+    <a href="#" class="social-btn">TWITTER / X</a>
+    <a href="#" class="social-btn">INSTAGRAM</a>
+    <a href="#" class="social-btn">YOUTUBE</a>
+    <a href="#" class="social-btn">PCB OFFICIAL</a>
+  </div>
+  <p class="footer-copy">© 2025 Pakistan Cricket Legacy Hub · Built for <span>cricket lovers worldwide</span></p>
+</footer>
+
+<!-- PLAYER MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-header">
+      <div class="modal-avatar" id="modal-avatar"></div>
+      <div>
+        <div class="modal-player-name" id="modal-name"></div>
+        <div class="modal-player-role" id="modal-role"></div>
+      </div>
+    </div>
+    <div class="stats-tabs" id="modal-tabs"></div>
+    <div id="modal-panels"></div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────
+const PLAYERS = [
+  {
+    id: 1,
+    name: "Babar Azam",
+    initials: "BA",
+    role: "BATTING",
+    era: "2016 — PRESENT",
+    description: "Modern master batsman",
+    t20: { matches: 122, runs: 4223, strikeRate: "129.3", average: "41.4", centuries: 4 },
+    odi:  { matches: 109, runs: 5571, centuries: 20, average: "57.0", strikeRate: "88.3" },
+    test: { matches: 56,  runs: 4471, centuries: 11, average: "46.1", wickets: "—" },
+    miniStats: [{ val: "122", key: "T20s" }, { val: "4223", key: "T20 Runs" }, { val: "57.0", key: "ODI Avg" }]
+  },
+  {
+    id: 2,
+    name: "Shahid Afridi",
+    initials: "SA",
+    role: "ALL-ROUNDER",
+    era: "1996 — 2018",
+    description: "Boom Boom Afridi – legend",
+    t20: { matches: 99, runs: 1416, strikeRate: "150.0", average: "17.0", centuries: 0 },
+    odi:  { matches: 398, runs: 8064, centuries: 6, average: "23.6", strikeRate: "117.0" },
+    test: { matches: 27,  runs: 1716, centuries: 5, average: "36.5", wickets: "48" },
+    miniStats: [{ val: "398", key: "ODIs" }, { val: "8064", key: "ODI Runs" }, { val: "395", key: "Wkts" }]
+  },
+  {
+    id: 3,
+    name: "Wasim Akram",
+    initials: "WA",
+    role: "BOWLING",
+    era: "1984 — 2003",
+    description: "Sultan of Swing — GOAT bowler",
+    t20: { matches: "N/A", runs: "N/A", strikeRate: "N/A", average: "N/A", centuries: "N/A" },
+    odi:  { matches: 356, runs: 3717, centuries: 0, average: "16.5", strikeRate: "77.3" },
+    test: { matches: 104, runs: 2898, centuries: 3, average: "22.6", wickets: "414" },
+    miniStats: [{ val: "414", key: "Test Wkts" }, { val: "502", key: "ODI Wkts" }, { val: "104", key: "Tests" }]
+  },
+  {
+    id: 4,
+    name: "Waqar Younis",
+    initials: "WY",
+    role: "BOWLING",
+    era: "1989 — 2003",
+    description: "Toe-crusher – Master of reverse swing",
+    t20: { matches: "N/A", runs: "N/A", strikeRate: "N/A", average: "N/A", centuries: "N/A" },
+    odi:  { matches: 262, runs: 968, centuries: 0, average: "29.9", strikeRate: "50.3" },
+    test: { matches: 87,  runs: 1010, centuries: 0, average: "10.9", wickets: "373" },
+    miniStats: [{ val: "373", key: "Test Wkts" }, { val: "416", key: "ODI Wkts" }, { val: "87", key: "Tests" }]
+  },
+  {
+    id: 5,
+    name: "Imran Khan",
+    initials: "IK",
+    role: "ALL-ROUNDER",
+    era: "1971 — 1992",
+    description: "Captain & icon — 1992 WC legend",
+    t20: { matches: "N/A", runs: "N/A", strikeRate: "N/A", average: "N/A", centuries: "N/A" },
+    odi:  { matches: 175, runs: 3709, centuries: 1, average: "33.4", strikeRate: "72.6" },
+    test: { matches: 88,  runs: 3807, centuries: 6, average: "37.7", wickets: "362" },
+    miniStats: [{ val: "88", key: "Tests" }, { val: "362", key: "Wkts" }, { val: "3807", key: "Runs" }]
+  },
+  {
+    id: 6,
+    name: "Mohammad Rizwan",
+    initials: "MR",
+    role: "BATTING",
+    era: "2019 — PRESENT",
+    description: "Keeper-batsman, modern T20 giant",
+    t20: { matches: 89, runs: 3232, strikeRate: "127.4", average: "48.4", centuries: 4 },
+    odi:  { matches: 73, runs: 2527, centuries: 5, average: "47.9", strikeRate: "82.0" },
+    test: { matches: 33,  runs: 2312, centuries: 5, average: "41.3", wickets: "—" },
+    miniStats: [{ val: "89", key: "T20s" }, { val: "3232", key: "T20 Runs" }, { val: "48.4", key: "T20 Avg" }]
+  }
+];
+
+const TIMELINE = [
+  { year: "1952", event: "Pakistan's First Test Match", desc: "Pakistan played their inaugural Test match against India, marking the birth of a cricketing nation.", gold: false },
+  { year: "1954", event: "First Test Victory", desc: "Pakistan beat England at The Oval to claim their first ever Test match victory — a historic milestone.", gold: true },
+  { year: "1976", event: "Imran Khan Debut", desc: "A 23-year-old Imran Khan began his international career, setting the stage for two decades of dominance.", gold: false },
+  { year: "1982", event: "Wasim Akram Born", desc: "Pakistan's greatest fast bowler would go on to revolutionize swing bowling worldwide.", gold: false },
+  { year: "1987", event: "Javed Miandad's Last-Ball Six", desc: "Against India in Sharjah, Miandad hit Chetan Sharma for a six off the last ball to seal a dramatic win.", gold: true },
+  { year: "1992", event: "🏆 World Cup Champions", desc: "Imran Khan led Pakistan to their first and only ODI World Cup title, defeating England in Melbourne by 22 runs.", gold: true },
+  { year: "2009", event: "⚡ T20 World Cup Champions", desc: "Pakistan dominated the ICC T20 World Cup in England, defeating Sri Lanka by 8 wickets at Lord's.", gold: true },
+  { year: "2016", event: "Babar Azam's Breakthrough", desc: "Babar Azam emerged as one of cricket's finest batsmen, smashing records in all three formats.", gold: false },
+  { year: "2017", event: "🥇 Champions Trophy Win", desc: "Pakistan destroyed India by 180 runs in the Champions Trophy final at The Oval — the greatest upset in ICC history.", gold: true },
+  { year: "2021", event: "No.1 T20 Ranking", desc: "Pakistan achieved the No.1 ICC T20 ranking under Babar Azam and Mohammad Rizwan's leadership.", gold: false },
+  { year: "2025", event: "Next Chapter Begins", desc: "A new generation of Green Titans continues building on the legacy, with world-class talent emerging from every corner of Pakistan.", gold: false }
+];
+
+// ─── INIT ────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  generateParticles();
+  renderPlayers(PLAYERS);
+  renderTimeline();
+  setupFilters();
+  setupSearch();
+  setupModal();
+  setupTheme();
+  setupNav();
+  setupScrollReveal();
+  animateCounters();
+});
+
+// ─── PARTICLES ───────────────────────────────────────────────────────
+function generateParticles() {
+  const wrap = document.getElementById('particles');
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${Math.random()*3+1}px;
+      height:${Math.random()*3+1}px;
+      animation-duration:${Math.random()*15+8}s;
+      animation-delay:${Math.random()*10}s;
+      opacity:${Math.random()*0.5+0.1};
+    `;
+    wrap.appendChild(p);
+  }
+}
+
+// ─── PLAYERS ─────────────────────────────────────────────────────────
+function renderPlayers(players) {
+  const grid = document.getElementById('players-grid');
+  grid.innerHTML = '';
+  if (!players.length) {
+    grid.innerHTML = '<p style="color:var(--muted);font-family:var(--font-mono);font-size:0.8rem;grid-column:1/-1;text-align:center;padding:3rem">// NO PLAYERS FOUND</p>';
+    return;
+  }
+  players.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'player-card reveal';
+    card.style.transitionDelay = `${i * 0.08}s`;
+    card.innerHTML = `
+      <div class="player-avatar">${p.initials}</div>
+      <div class="player-role-badge">${p.role}</div>
+      <div class="player-name">${p.name}</div>
+      <div class="player-era">${p.era}</div>
+      <div class="player-mini-stats">
+        ${p.miniStats.map(s => `<div class="mini-stat"><div class="mini-stat-val">${s.val}</div><div class="mini-stat-key">${s.key}</div></div>`).join('')}
+      </div>
+      <div class="player-card-footer">
+        <span class="view-stats-btn">VIEW FULL STATS</span>
+        <span class="arrow-icon">→</span>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(p));
+    grid.appendChild(card);
+    setTimeout(() => card.classList.add('visible'), 100 + i * 80);
+  });
+}
+
+// ─── FILTERS ─────────────────────────────────────────────────────────
+function setupFilters() {
+  const btns = document.querySelectorAll('.filter-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.format;
+      const q = document.getElementById('player-search').value.toLowerCase();
+      filterPlayers(f, q);
+    });
+  });
+}
+
+function setupSearch() {
+  document.getElementById('player-search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    const f = document.querySelector('.filter-btn.active').dataset.format;
+    filterPlayers(f, q);
+  });
+}
+
+function filterPlayers(format, query) {
+  let filtered = PLAYERS;
+  if (format !== 'all') {
+    filtered = filtered.filter(p => {
+      if (format === 'batsman') return p.role === 'BATTING';
+      if (format === 'bowling') return p.role === 'BOWLING';
+      if (format === 'allrounder') return p.role === 'ALL-ROUNDER';
+      return true;
+    });
+  }
+  if (query) {
+    filtered = filtered.filter(p => p.name.toLowerCase().includes(query) || p.era.toLowerCase().includes(query));
+  }
+  renderPlayers(filtered);
+}
+
+// ─── MODAL ───────────────────────────────────────────────────────────
+function setupModal() {
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+}
+
+function openModal(player) {
+  document.getElementById('modal-avatar').textContent = player.initials;
+  document.getElementById('modal-name').textContent = player.name;
+  document.getElementById('modal-role').textContent = player.role + ' · ' + player.era;
+
+  const formats = [
+    { key: 't20', label: 'T20I', data: player.t20, fields: ['matches','runs','strikeRate','average','centuries'] },
+    { key: 'odi', label: 'ODI', data: player.odi, fields: ['matches','runs','centuries','average','strikeRate'] },
+    { key: 'test', label: 'TEST', data: player.test, fields: ['matches','runs','centuries','average','wickets'] }
+  ];
+
+  const tabsWrap = document.getElementById('modal-tabs');
+  const panelsWrap = document.getElementById('modal-panels');
+  tabsWrap.innerHTML = '';
+  panelsWrap.innerHTML = '';
+
+  formats.forEach((fmt, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'stats-tab' + (i === 0 ? ' active' : '');
+    tab.textContent = fmt.label;
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.stats-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.stats-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + fmt.key).classList.add('active');
+    });
+    tabsWrap.appendChild(tab);
+
+    const panel = document.createElement('div');
+    panel.className = 'stats-panel' + (i === 0 ? ' active' : '');
+    panel.id = 'panel-' + fmt.key;
+    const labels = { matches:'Matches', runs:'Runs', strikeRate:'Strike Rate', average:'Average', centuries:'Centuries', wickets:'Wickets' };
+    panel.innerHTML = fmt.fields.map(f => `
+      <div class="stat-block${f==='wickets'?' gold-stat':''}">
+        <div class="stat-block-val">${fmt.data[f] ?? '—'}</div>
+        <div class="stat-block-key">${labels[f] || f}</div>
+      </div>
+    `).join('');
+    panelsWrap.appendChild(panel);
+  });
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── TIMELINE ────────────────────────────────────────────────────────
+function renderTimeline() {
+  const wrap = document.getElementById('timeline-items');
+  TIMELINE.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'timeline-item reveal';
+    el.style.transitionDelay = `${i * 0.07}s`;
+    const isEven = i % 2 === 0;
+    el.innerHTML = `
+      ${isEven ? `<div class="tl-content">
+        <div class="tl-year">${item.year}</div>
+        <div class="tl-event">${item.event}</div>
+        <div class="tl-desc">${item.desc}</div>
+      </div>` : '<div class="tl-empty"></div>'}
+      <div class="tl-dot${item.gold ? ' gold' : ''}"></div>
+      ${!isEven ? `<div class="tl-content">
+        <div class="tl-year">${item.year}</div>
+        <div class="tl-event">${item.event}</div>
+        <div class="tl-desc">${item.desc}</div>
+      </div>` : '<div class="tl-empty"></div>'}
+    `;
+    wrap.appendChild(el);
+  });
+}
+
+// ─── THEME ───────────────────────────────────────────────────────────
+function setupTheme() {
+  const btn = document.getElementById('theme-toggle');
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    btn.textContent = next === 'dark' ? '☀ LIGHT' : '🌙 DARK';
+  });
+}
+
+// ─── NAV ────────────────────────────────────────────────────────────
+function setupNav() {
+  const ham = document.getElementById('hamburger');
+  const links = document.getElementById('nav-links');
+  ham.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(5,10,5,0.95)'
+      : 'rgba(5,10,5,0.7)';
+  });
+}
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────────────
+function setupScrollReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// ─── COUNTERS ────────────────────────────────────────────────────────
+function animateCounters() {
+  const counters = document.querySelectorAll('.count-up');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        let start = 0;
+        const duration = 1500;
+        const step = (timestamp) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(step);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => obs.observe(c));
+}
+</script>
+</body>
+</html>
