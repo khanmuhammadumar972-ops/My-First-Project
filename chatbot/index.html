@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+      background-color: rgb(148, 147, 147) ;
+    }
+
+    .chat-container {
+      width: 350px;
+      background: rgb(255, 255, 255);
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+      padding: 20px;
+      
+    }
+
+    #chatbox {
+      height: 300px;
+      border: 1px solid #ddd;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .user {
+      color: blue;
+      margin: 5px 0;
+    }
+
+    .bot {
+      color: green;
+      margin: 5px 0;
+    }
+
+    input {
+      width: 72%;
+      padding: 10px;
+    }
+
+    button {
+      width: 24%;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <h2>My Chatbot</h2>
+
+    <div id="chatbox"></div>
+
+    <input
+      type="text"
+      id="userInput"
+      placeholder="Type message..."
+      onkeypress="handleKey(event)"
+    >
+
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
